@@ -13,9 +13,10 @@ h2 {
   text-align: center;
 }
 
-.friend {
+.friend-container {
   display: flex;
   margin: 10px;
+  padding: 0 10px;
   border: 1px solid lightgrey;
   justify-content: space-between;
 
@@ -54,7 +55,6 @@ button.delete {
 
 .friends-form {
   align-self: center;
-  width: 700px;
   margin: 0 auto;
 }
 
