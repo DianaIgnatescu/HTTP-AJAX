@@ -47,6 +47,14 @@ a.active {
   width: 1200px;
 }
 
+.friends-form {
+  display: flex;
+  justify-content: space-evenly;
+  width: 800px;
+  margin: 0 auto;
+  align-items: baseline;
+}
+
 .friends-list-container {
   display: flex;
   flex-direction: column;
@@ -70,15 +78,20 @@ a.active {
   margin-right: 20px;
 }
 
-.friend-container p:last-child {
+.friend-container p:nth-last-child(2) {
   width: 300px;
+  border: none;
+}
+
+.friend-container p:last-child {
+  width: 200px;
   border: none;
 }
 
 .details {
   display: flex;
   align-items: center;
-  width: 700px;
+  width: 900px;
 }
 
 .requests {
@@ -108,6 +121,7 @@ a.active {
 
 button.add {
   background: #35A0B1;
+  width: 150px;
   border: none;
   padding: 5px 10px;
   height: 30px;
@@ -148,6 +162,8 @@ button.cancel:hover {
 
 input {
   margin: 10px;
+  color: #5062AA;
+  font-size: 14px;
   height: 30px;
   width: 25%;
   border: 1px solid #f1f1f1;
