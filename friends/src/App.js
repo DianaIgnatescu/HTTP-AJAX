@@ -138,7 +138,7 @@ class App extends Component {
             addNewFriend={this.addNewFriend}
           />} 
         />
-        <Route exact path="/" render={(props) => 
+        <Route exact path="/home" render={(props) => 
           <FriendsList
           {...props}
           friends={friends}

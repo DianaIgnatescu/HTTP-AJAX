@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Navigation = () => {
   return (
     <div className="navigation-wrapper">
-      <Link to="/">Home</Link>
-      <Link to="/add-friend">Add Friend</Link>
+      <NavLink to="/home">Home</NavLink>
+      <NavLink to="/add-friend">Add Friend</NavLink>
     </div>
   )
 }
