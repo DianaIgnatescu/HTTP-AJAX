@@ -15,6 +15,12 @@ class App extends Component {
         email: "",
         id: this.getNextId(),
       },
+      updateFriendFormData: {
+        name: "",
+        age: "",
+        email: "",
+        id: 0,
+      }
     };
   }
 
@@ -31,15 +37,46 @@ class App extends Component {
     });
   };
 
+  handleUpdateChange = (e) => {
+    this.setState({
+      updateFriendFormData: {
+        ...this.state.updateFriendFormData,
+        [e.target.name]: e.target.value,
+      }
+    });
+  };
+
   getNextId = () => String(Date.now());
 
   getFriends() {
     axios.get('http://localhost:5000/friends')
     .then(response => {
-      this.setState({ friends: response.data });
+      const friends = response.data.map(friend => ({
+        id: friend.id,
+        name: friend.name,
+        age: friend.age,
+        email: friend.email,
+        isEditable: false,
+      }));
+      this.setState({ friends });
   })
     .catch(err => console.log(err));
   }
+
+  makeEditable = (id) => {
+    const index = this.state.friends.findIndex(friend => friend.id === id);
+    const newFriends = [...this.state.friends];
+    newFriends.forEach(friend => friend.isEditable = false);
+    newFriends[index].isEditable = true;
+    this.setState({ friends: [...newFriends], updateFriendFormData: newFriends[index] });
+  }
+
+  makeUneditable = (id) => {
+    const index = this.state.friends.findIndex(friend => friend.id === id);
+    const newFriends = [...this.state.friends];
+    newFriends[index].isEditable = false;
+    this.setState({ friends: [...newFriends], updateFriendFormData: { name: '', age: '', email: '', id: 0 }});
+  } 
 
   resetForm = () => {
     this.setState({
@@ -51,15 +88,20 @@ class App extends Component {
       }});
   };
 
-  addNewFriend = (e) => {
-    e.preventDefault();
-    console.log(this.state.friendFormData);
-    axios.post('http://localhost:5000/friends', this.state.friendFormData)
-      .then((response) => {
-        this.setState({ friends: response.data });
-        this.resetForm();
-      })
-      .catch(err => console.log(err));
+  addNewFriend = () => {
+    const { name, age, email } = this.state.friendFormData;
+    if (name.length > 0 && age.length > 0 && email.length > 0) {
+      axios.post('http://localhost:5000/friends', this.state.friendFormData)
+        .then((response) => {
+          this.setState({ friends: response.data });
+          this.resetForm();
+        })
+        .catch(err => console.log(err));
+    } else {
+      alert('Input field must not be empty!');
+    }
+      
+    
   };
 
   deleteFriend = (e, friendId) => {
@@ -67,17 +109,37 @@ class App extends Component {
     axios.delete(`http://localhost:5000/friends/${friendId}`)
       .then(response => {
         this.resetForm();
-        this.setState({ friends: response.data });
+        this.getFriends();
       })
       .catch(err => console.log(err));
   }
+  
+  updateFriend = (e, friendId) => {
+    e.preventDefault();
+    axios.put(`http://localhost:5000/friends/${friendId}`, this.state.updateFriendFormData)
+      .then(response => {
+        this.getFriends();
+      })
+      .catch(err => console.log(err));
+  };
 
   render() {
     const { friends } = this.state;
     return (
       <div className="friends-wrapper">
-        <FriendForm handleChange={this.handleChange} addNewFriend={this.addNewFriend} />
-        <FriendsList friends={friends} deleteFriend={this.deleteFriend} />
+        <FriendForm
+          handleChange={this.handleChange}
+          addNewFriend={this.addNewFriend}
+        />
+        <FriendsList
+          friends={friends}
+          key={this.state.friends.id}
+          handleUpdateChange={this.handleUpdateChange}
+          updateFriend={this.updateFriend}
+          deleteFriend={this.deleteFriend}
+          makeEditable={this.makeEditable}
+          makeUneditable={this.makeUneditable}
+        />
       </div>
     );
   }
