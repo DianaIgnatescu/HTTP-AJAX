@@ -12,15 +12,17 @@ class App extends Component {
     this.state = {
       friends: [],
       friendFormData: {
-        name: "",
-        age: "",
-        email: "",
+        name: '',
+        age: '',
+        email: '',
+        alias: '',
         id: this.getNextId(),
       },
       updateFriendFormData: {
-        name: "",
-        age: "",
-        email: "",
+        name: '',
+        age: '',
+        email: '',
+        alias: '',
         id: 0,
       }
     };
@@ -58,6 +60,7 @@ class App extends Component {
         name: friend.name,
         age: friend.age,
         email: friend.email,
+        alias: friend.alias,
         isEditable: false,
       }));
       this.setState({ friends });
@@ -77,15 +80,16 @@ class App extends Component {
     const index = this.state.friends.findIndex(friend => friend.id === id);
     const newFriends = [...this.state.friends];
     newFriends[index].isEditable = false;
-    this.setState({ friends: [...newFriends], updateFriendFormData: { name: '', age: '', email: '', id: 0 }});
+    this.setState({ friends: [...newFriends], updateFriendFormData: { name: '', age: '', email: '', alias: '', id: 0 }});
   } 
 
   resetForm = () => {
     this.setState({
       friendFormData: {
-        name: "",
-        age: "",
-        email: "",
+        name: '',
+        age: '',
+        email: '',
+        alias: '',
         id: this.getNextId(),
       }});
   };
