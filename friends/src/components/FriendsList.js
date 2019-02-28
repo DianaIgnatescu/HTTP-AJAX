@@ -4,12 +4,13 @@ import FriendEditable from './FriendEditable';
 
 const FriendsList = (props) => {
   return(
-    <div className="friends-list-container" key={props.id}>
+    <div className="friends-list-container">
       <h2>List of Friends</h2>
       {props.friends.map(friend => {
         if (friend.isEditable) {
           return (
             <FriendEditable
+              key={friend.id}
               name={friend.name}
               age={friend.age}
               id={friend.id}

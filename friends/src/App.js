@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import axios from 'axios';
 import FriendsList from './components/FriendsList';
 import FriendForm from './components/FriendForm';
+import Navigation from './components/Navigation';
 import './App.css';
 
 class App extends Component {
@@ -93,7 +95,7 @@ class App extends Component {
     if (name.length > 0 && age.length > 0 && email.length > 0) {
       axios.post('http://localhost:5000/friends', this.state.friendFormData)
         .then((response) => {
-          this.setState({ friends: response.data });
+          this.getFriends();
           this.resetForm();
         })
         .catch(err => console.log(err));
@@ -127,11 +129,18 @@ class App extends Component {
     const { friends } = this.state;
     return (
       <div className="friends-wrapper">
-        <FriendForm
-          handleChange={this.handleChange}
-          addNewFriend={this.addNewFriend}
+
+        <Route path="/" render={(props) => <Navigation {...props} />} />
+        <Route exact path="/add-friend" render={(props) => 
+          <FriendForm
+            {...props}
+            handleChange={this.handleChange}
+            addNewFriend={this.addNewFriend}
+          />} 
         />
-        <FriendsList
+        <Route exact path="/" render={(props) => 
+          <FriendsList
+          {...props}
           friends={friends}
           key={this.state.friends.id}
           handleUpdateChange={this.handleUpdateChange}
@@ -139,7 +148,22 @@ class App extends Component {
           deleteFriend={this.deleteFriend}
           makeEditable={this.makeEditable}
           makeUneditable={this.makeUneditable}
+          />}
         />
+
+        {/* <FriendForm
+          handleChange={this.handleChange}
+          addNewFriend={this.addNewFriend}
+        /> */}
+        {/* <FriendsList
+          friends={friends}
+          key={this.state.friends.id}
+          handleUpdateChange={this.handleUpdateChange}
+          updateFriend={this.updateFriend}
+          deleteFriend={this.deleteFriend}
+          makeEditable={this.makeEditable}
+          makeUneditable={this.makeUneditable}
+        />  */}
       </div>
     );
   }
