@@ -5,9 +5,9 @@ const Friend = (props) => {
   return (
     <div className="friend-container" key={id}>
       <div className="details">
-        <p>Name: {name}</p>
-        <p>Age: {age}</p>
-        <p>Email: <a href={email}>{email}</a></p>
+        <p><span>Name:</span>{name}</p>
+        <p><span>Age:</span>{age}</p>
+        <p><span>Email:</span><a href={email}>{email}</a></p>
       </div>
       <div className="requests">
         <button className="update" onClick={(e) => {makeEditable(id)}}>Update</button>

@@ -1,16 +1,56 @@
+h2 {
+  text-align: center;
+  color: #5062AA;
+}
+
+span {
+  color: #35A0B1;
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+label {
+  color: #35A0B1;
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+a {
+  color: #5062AA;
+}
+
+.navigation-wrapper {
+  display: flex;
+  margin: 0 auto;
+  max-width: 200px;
+  justify-content: space-around;
+  
+
+}
+
+.navigation-wrapper a {
+  font-size: 14px;
+  padding: 15px;
+  align-items: center;
+  color: #5062AA;
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold;
+}
+
+a.active {
+  text-decoration: underline;
+}
+
 .friends-wrapper {
   margin: 0 auto;
-  width: 1000px;
+  width: 1200px;
 }
 
 .friends-list-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-h2 {
-  text-align: center;
 }
 
 .friend-container {
@@ -21,19 +61,18 @@ h2 {
   justify-content: space-between;
   background: #FFFFFF;
   border-radius: 3px;
-
-}
-
-a {
-  color: #5062AA;
 }
 
 .friend-container p {
-  width: 150px;
+  width: 170px;
+  color: #5062AA;
+  border-right: 1px solid lightgrey;
+  margin-right: 20px;
 }
 
 .friend-container p:last-child {
   width: 300px;
+  border: none;
 }
 
 .details {
@@ -56,6 +95,7 @@ a {
   height: 30px;
   margin: 5px;
   border: none;
+  font-size: 14px;
   font-weight: bold;
 }
 
@@ -63,6 +103,7 @@ a {
   background: #55bccc;
   cursor: pointer;
   border-radius: 0 0 7px 0px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 button.add {
@@ -72,20 +113,23 @@ button.add {
   height: 30px;
   color: white;
   font-weight: bold;
+  font-size: 14px;
 }
 
 button.add:hover {
   cursor: pointer;
   background: #55bccc;
-  border-radius: 0 0 7px 0px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 button.delete {
-  /* background: #ff0000; */
-  /* background: #E35F75; */
   background: #5062AA;
-  font-weight: bold;
 
+}
+
+button.delete:hover {
+  background: #BB0A21;
+  border-radius: 0 0 7px 0px;
 }
 
 button.cancel {
@@ -95,14 +139,6 @@ button.cancel {
 button.cancel:hover {
   background: #5c6db2;
 }
-
-
-button.delete:hover {
-  background: #BB0A21;
-  cursor: pointer;
-  border-radius: 0 0 7px 0px;
-}
-
 
 .friends-form {
   align-self: center;
@@ -115,4 +151,11 @@ input {
   height: 30px;
   width: 25%;
   border: 1px solid #f1f1f1;
+  padding-left: 10px;
+  border: 1px solid #e7e7e7;
 }
+
+input::placeholder {
+  font-size: 14px;
+}
+

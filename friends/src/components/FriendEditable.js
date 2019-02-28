@@ -5,7 +5,7 @@ const FriendEditable = (props) => {
   return (
     <div className="friend-container" key={id}>
           <div className="details">
-            <label>Name:</label><input 
+            <label>Name:</label><input
               name="name"
               type="text" 
               placeholder={name}
