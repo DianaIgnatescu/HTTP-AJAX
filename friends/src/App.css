@@ -15,21 +15,30 @@ h2 {
 
 .friend-container {
   display: flex;
-  margin: 10px;
+  margin-bottom: 10px;
   padding: 0 10px;
-  border: 1px solid lightgrey;
+  /* border: 1px solid lightgrey; */
   justify-content: space-between;
+  background: #FFFFFF;
+  border-radius: 3px;
 
 }
 
-.friend p {
-  padding: 0 20px;
+a {
+  color: #5062AA;
+}
+
+.friend-container p {
+  width: 150px;
+}
+
+.friend-container p:last-child {
+  width: 300px;
 }
 
 .details {
   display: flex;
   align-items: center;
-  margin-right: 50px;
   width: 700px;
 }
 
@@ -41,23 +50,69 @@ h2 {
 }
 
 .requests button {
-  background: dodgerblue;
+  background: #35A0B1;
   color: white;
   padding: 5px 10px;
   height: 30px;
   margin: 5px;
+  border: none;
+  font-weight: bold;
+}
+
+.requests button:hover {
+  background: #55bccc;
+  cursor: pointer;
+  border-radius: 0 0 7px 0px;
+}
+
+button.add {
+  background: #35A0B1;
+  border: none;
+  padding: 5px 10px;
+  height: 30px;
+  color: white;
+  font-weight: bold;
+}
+
+button.add:hover {
+  cursor: pointer;
+  background: #55bccc;
+  border-radius: 0 0 7px 0px;
 }
 
 button.delete {
-  background: #ff0000;
+  /* background: #ff0000; */
+  /* background: #E35F75; */
+  background: #5062AA;
+  font-weight: bold;
+
+}
+
+button.cancel {
+  background: #5062AA;
+}
+
+button.cancel:hover {
+  background: #5c6db2;
+}
+
+
+button.delete:hover {
+  background: #BB0A21;
+  cursor: pointer;
+  border-radius: 0 0 7px 0px;
 }
 
 
 .friends-form {
   align-self: center;
   margin: 0 auto;
+  max-width: 90%;
 }
 
 input {
   margin: 10px;
+  height: 30px;
+  width: 25%;
+  border: 1px solid #f1f1f1;
 }
