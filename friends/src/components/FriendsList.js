@@ -15,6 +15,7 @@ const FriendsList = (props) => {
               age={friend.age}
               id={friend.id}
               email={friend.email}
+              alias={friend.alias}
               updateFriend={props.updateFriend}
               handleUpdateChange={props.handleUpdateChange}
               makeUneditable={props.makeUneditable}
@@ -27,6 +28,7 @@ const FriendsList = (props) => {
             id={friend.id}
             key={friend.id}
             email={friend.email}
+            alias={friend.alias}
             deleteFriend={props.deleteFriend}
             makeEditable={props.makeEditable}
           />

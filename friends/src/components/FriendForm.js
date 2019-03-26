@@ -37,6 +37,13 @@ const FriendForm = (props) => {
           placeholder="Email..."
           onChange={props.handleChange}
         />
+        <input 
+          name="alias"
+          type="text" 
+          placeholder="Alias..."
+          onChange={props.handleChange}
+        />
+
         <button
           onClick={(event) => handleSubmit(event, props.addNewFriend)}
           className="add">

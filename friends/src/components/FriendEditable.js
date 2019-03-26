@@ -1,7 +1,7 @@
 import React from 'react';
 
 const FriendEditable = (props) => {
-  const { name, age, id, email, updateFriend, makeUneditable, handleUpdateChange } = props;
+  const { name, age, id, email, alias, updateFriend, makeUneditable, handleUpdateChange } = props;
   return (
     <div className="friend-container" key={id}>
           <div className="details">
@@ -21,6 +21,12 @@ const FriendEditable = (props) => {
               name="email"
               type="email"
               placeholder={email}
+              onChange={handleUpdateChange} 
+            />
+            <label>Alias:</label><input 
+              name="alias"
+              type="text"
+              placeholder={alias}
               onChange={handleUpdateChange} 
             />
           </div>
